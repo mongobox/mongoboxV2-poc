@@ -1,0 +1,9 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_port: 3306
+    database_name: mongobox_v2
+    database_user: travis
+    database_password: ~
+    locale: fr
+    secret: ThisTokenIsNotSoSecretChangeIt
