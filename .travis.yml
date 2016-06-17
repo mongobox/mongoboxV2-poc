@@ -19,5 +19,6 @@ script:
   - phpunit
 
 notifications:
-  email:
-    -  aurelien.giry@gmail.com
+  slack:
+    rooms:
+      - mongobox-team:YnkMz5hP5L4fNPAoL0vxBPRz#travis
