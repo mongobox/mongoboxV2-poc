@@ -1,21 +1,21 @@
-# Cache and logs (Symfony2)
-/app/cache/*
-/app/logs/*
-!app/cache/.gitkeep
-!app/logs/.gitkeep
-
 # Cache and logs (Symfony3)
+/var/*
+!/var/cache
 /var/cache/*
-/var/logs/*
 !var/cache/.gitkeep
+!/var/logs
+/var/logs/*
 !var/logs/.gitkeep
+!/var/sessions
+/var/sessions/*
+!var/sessions/.gitkeep
+!var/SymfonyRequirements.php
 
 # Parameters
 /app/config/parameters.yml
 /app/config/parameters.ini
 
 # Managed by Composer
-/app/bootstrap.php.cache
 /var/bootstrap.php.cache
 /bin/*
 !bin/console
@@ -38,3 +38,4 @@
 
 # Composer PHAR
 /composer.phar
+composer.lock
