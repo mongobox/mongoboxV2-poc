@@ -21,3 +21,6 @@ parameters:
     # Google API
     google_app_name: ~
     google_developer_key: ~
+
+    # Locale
+    locale: fr

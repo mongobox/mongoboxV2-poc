@@ -2,6 +2,10 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: "@AdminBundle/Resources/config/services.yml" }
+    - { resource: "@CoreBundle/Resources/config/services.yml" }
+    - { resource: "@JukeboxBundle/Resources/config/services.yml" }
+    - { resource: "@UserBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -10,7 +14,7 @@ parameters:
 
 framework:
     #esi:             ~
-    #translator:      { fallbacks: ["%locale%"] }
+    translator:      { fallbacks: ["%locale%"] }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -66,3 +70,67 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+# Sonata Admin
+sonata_block:
+    default_contexts: [sonata_page_bundle]
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts:   [admin]
+
+        sonata.block.service.text:
+        #sonata.admin.block.search_result:
+
+sonata_admin:
+    title:      Mongobox
+    title_logo: /bundles/core/img/Mlogo-Black.png
+    dashboard:
+        blocks:
+            - { position: right, type: sonata.admin.block.admin_list }
+            - { position: left, type: sonata.block.service.text, settings: { content: '<div class="box"><div class="box-header with-border"><h2>Bienvenue !</h2></div><div class="box-body">Bienvenue dans la partie administrable du site.</div></div>'} }
+            #-
+              #   class:    col-lg-4 col-xs-6
+              #   position: top
+              #   type:     sonata.admin.block.stats
+              #   settings:
+              #       code: sonata.admin.users
+              #       icon: fa-users
+              #       text: Users
+              #     color: bg-green
+# FOS User Bundle
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: UserBundle\Entity\User
+    #profile:
+     #   form:
+      #      type: aml_user_profile
+
+#fos_user:
+#    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+#    firewall_name: main
+#    user_class: Mongobox\Bundle\UsersBundle\Entity\User
+#    group:
+#        group_class: Mongobox\Bundle\GroupBundle\Entity\Group
+#    registration:
+#        form:
+            #type: AppBundle\Form\RegistrationType
+            # if you are using Symfony < 2.8 you should use the type name instead
+ #           type: mongobox_user_registration
+ #       confirmation:
+#            enabled:    true
+ #   profile:
+  #      form:
+            #type: AppBundle\Form\RegistrationType
+            # if you are using Symfony < 2.8 you should use the type name instead
+   #         type: mongobox_user_profile
+
+#    from_email:
+ #       address:        noreply@mongobox.fr
+  #      sender_name:    Mongobox
+
+# KNP Menu
+knp_menu:
+    providers:
+        builder_alias: false    # disable the builder-based provider
+        container_aware: true   # keep this one enabled. Can be omitted as it is the default
