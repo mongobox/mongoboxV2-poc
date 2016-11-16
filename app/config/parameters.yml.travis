@@ -1,9 +1,13 @@
-    # This file is auto-generated during the composer install
+# This file is auto-generated during the composer install
 parameters:
-    database_driver: pdo_mysql
-    database_port: 3306
+    database_host:     ~
+    database_port:     ~
     database_name: mongobox_v2
     database_user: travis
     database_password: ~
     locale: fr
     secret: ThisTokenIsNotSoSecretChangeIt
+    mailer_transport:  smtp
+    mailer_host:       ~
+    mailer_user:       ~
+    mailer_password:   ~

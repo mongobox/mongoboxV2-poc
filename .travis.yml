@@ -2,8 +2,6 @@ language: php
 sudo: false
 
 php:
-  - '5.5'
-  - '5.6'
   - '7.0'
 
 before_install:
@@ -11,9 +9,9 @@ before_install:
   - composer self-update
 
 install:
-  - composer install -o
-#  - php app/console doctrine:database:create --env=test
-#  - php app/console doctrine:schema:create --env=test
+  - composer install -o --no-scripts
+  - php bin/console doctrine:database:create --env=test
+  - php bin/console doctrine:schema:create --env=test
 
 script:
   - phpunit
