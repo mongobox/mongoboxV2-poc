@@ -14,3 +14,26 @@ web_profiler:
 
 swiftmailer:
     disable_delivery: true
+
+security:
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            pattern: /.*
+            http_basic:
+                realm: "Secured Area"
+            logout: true
+            security: true
+            anonymous: true
+
+
+doctrine:
+    dbal:
+        driver:   pdo_sqlite
+        dbname:   "%database_name%"
+        user:     "%database_user%"
+        password: "%database_password%"
+        charset:  UTF8

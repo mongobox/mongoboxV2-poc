@@ -39,9 +39,11 @@
         "cocur/slugify": "^2.1",
         "sonata-project/core-bundle": "^3.0",
         "sonata-project/cache": "^1.0",
-        "sonata-project/block-bundle": "^3.0",
+        "sonata-project/block-bundle": "^3.2",
         "sonata-project/exporter": "^1.4",
-        "sonata-project/admin-bundle": "^3.1"
+        "sonata-project/admin-bundle": "^3.9",
+        "sonata-project/doctrine-orm-admin-bundle": "^3.1",
+        "liip/imagine-bundle": "^1.6"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

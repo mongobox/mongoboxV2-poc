@@ -1,0 +1,12 @@
+# Mongobox\Bundle\UsersBundle/Resources/config/admin.yml
+services:
+    admin.user:
+        class: UserBundle\Admin\UserAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Administration", label: "Membres" }
+        arguments:
+            - ~
+            - UserBundle\Entity\User
+            - ~
+        calls:
+            - [ setTranslationDomain, [MongoboxUsersBundle]]

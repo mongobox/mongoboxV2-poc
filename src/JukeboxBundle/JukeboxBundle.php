@@ -1,9 +1,9 @@
 <?php
 
-namespace AppBundle;
+namespace JukeboxBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class AppBundle extends Bundle
+class JukeboxBundle extends Bundle
 {
 }
