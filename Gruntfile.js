@@ -4,9 +4,8 @@ module.exports = function (grunt) {
     grunt.initConfig({
 
         // Paths (use with <%= path %> for example)
-        src: 'src',
-        coreBundle: 'coreBundle',
-        dest: 'web',
+        coreBundle: 'src/CoreBundle/Resources',
+        dest: 'src/CoreBundle/Resources/public',
 
         // Store the project settings from the package.json file into the pkg property
         pkg: grunt.file.readJSON('package.json'),
@@ -19,7 +18,7 @@ module.exports = function (grunt) {
                     style: 'expanded'
                 },
                 files: {
-                '<%= dest %>+/styles/main.css': '<%= src %>/<%= coreBundle %>/styles/sass/main.sass'
+                    '<%= dest %>/styles/main.css': '<%= coreBundle %>/styles/sass/main.sass'
                 }
             }
         },
@@ -39,7 +38,7 @@ module.exports = function (grunt) {
         // CSSComb task options
         csscomb: {
             options: {
-                config: '<%= src %>/<%= coreBundle %>/styles/csscomb.json'
+                config: '<%= coreBundle %>/styles/csscomb.json'
             },
             dist: {
                 expand: true,
@@ -71,9 +70,9 @@ module.exports = function (grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: '<%= src %>/<%= coreBundle %>/img/',
+                    cwd: '<%= coreBundle %>/images/',
                     src: ['**/*.{png,jpg,gif}'],
-                    dest: '<%= dest %>/img/'
+                    dest: '<%= dest %>/images/'
                 }]
             }
         },
@@ -89,12 +88,12 @@ module.exports = function (grunt) {
             },
             // Watch sass changes
             sass: {
-                files: ['<%= src %>/<%= coreBundle %>/styles/sass/**/*.sass'],
+                files: ['<%= coreBundle %>/styles/sass/**/*.sass'],
                 tasks: ['sass', 'autoprefixer', 'csscomb:dist']
             },
             // Watch imagemin changes
             images: {
-                files: '<%= src %>/<%= coreBundle %>/img/!**/!*.{png,jpg,gif}',
+                files: '<%= coreBundle %>/images/!**/!*.{png,jpg,gif}',
                 tasks: 'newer:imagemin',
                 options: {
                     event: ['added', 'changed', 'deleted']

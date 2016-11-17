@@ -44,7 +44,7 @@ class DefaultControllerTest extends WebTestCase
         $crawler = $this->client->request('GET', '/');
 
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
-        $this->assertContains('CoreBundle::Hello World!', $crawler->filter('body')->text());
+        $this->assertContains('MongoBox Troll Station', $crawler->filter('title')->text());
     }
 
     private function logIn()

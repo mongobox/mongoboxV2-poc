@@ -1,0 +1,93 @@
+//Header
+//----------------------------------------------------------
+header
+  position: fixed
+  display: flex
+  justify-content: space-between
+  align-items: center
+  +not-full
+  left: 0
+  right: 0
+  z-index: 3
+  padding-top: 4.167em
+
+  [class$='-avatar-container']
+    height: 50px
+    width: 50px
+
+  .logo
+    img
+      max-height: 50px
+
+  nav
+    display: flex
+    align-items: center
+    font-size: 0.9167rem
+
+    [class^="mongobox-"],
+    [class*=" mongobox-"]
+      font-size: 1.5rem
+
+    .mongobox-close
+      font-size: .8rem
+
+    .toggle-live
+      > div
+        display: flex
+        justify-content: flex-end
+        align-items: center
+        color: rgba($w, .3)
+        font-size: 0.8333rem
+        text-transform: uppercase
+        cursor: pointer
+        transition: all .35s ease
+        position: relative
+
+        span + span
+          margin-left: $gutter/2
+
+      .live-show
+        top: 8px
+        opacity: 1
+
+      .live-hide
+        top: 20px
+        opacity: 0
+        color: $w
+
+      &.active
+        .live-show
+          top: -20px
+          opacity: 0
+
+        .live-hide
+          top: -8px
+          opacity: 1
+
+    ul
+      display: flex
+      align-items: center
+
+      li
+        margin-left: $gutter*2
+        color: rgba($w, .3)
+
+        &.active
+          color: $w
+
+        &.new
+          position: relative
+
+          &:before
+            content: ''
+            display: block
+            width: 8px
+            height: 8px
+            position: absolute
+            bottom: -12px
+            left: 0
+            right: 0
+            margin: 0 auto
+            background: #02fcd2
+            border-radius: 50%
+            box-shadow: 0 0 33px 3px #8cc1e9

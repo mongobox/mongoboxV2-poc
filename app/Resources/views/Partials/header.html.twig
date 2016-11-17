@@ -1,0 +1,57 @@
+{#Fix header#}
+<header>
+
+    {#logo - left part#}
+    <h1 class="logo">
+        <span class="hidden">Mongobox</span>
+        <img src="{{ asset('bundles/core/images/logo.png') }}" alt="Mongobox!"/>
+    </h1>
+
+    {#Navigation - right part#}
+    {% block nav %}
+        <nav>
+
+            {#Live option#}
+            <div id="see-live" class="toggle-live">
+                <div class="live-show">
+                    <span class="mongobox-go"></span>
+                    <span class="toggle-live-label">watch live</span>
+                </div>
+                <div class="live-hide">
+                    <span class="mongobox-close"></span>
+                    <span class="toggle-live-label">leave live</span>
+                </div>
+
+            </div>
+
+            {#Main navigation#}
+            <ul class="main-navigation">
+                <li class="active">
+                    <a>
+                        <span class="mongobox-live"></span>
+                        <span class="hidden">live</span>
+                    </a>
+                </li>
+                <li>
+                    <span class="mongobox-tumblr"></span>
+                    <span class="hidden">tumblr</span>
+                </li>
+                <li class="new">
+                    <span class="mongobox-chat"></span>
+                    <span class="hidden">chat</span>
+                </li>
+                <li>
+                    <span class="mongobox-search"></span>
+                    <span class="hidden">search</span>
+                </li>
+                <li>
+                    <span class="hidden">dashboard</span>
+                    <div class="contributor-avatar-container">
+                        <img class="contributor-avatar" src="{{ asset('bundles/core/images/users/user1.jpg') }}"
+                             alt="user's name"/>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    {% endblock %}
+</header>
