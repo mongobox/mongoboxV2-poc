@@ -39,3 +39,9 @@
 # Composer PHAR
 /composer.phar
 composer.lock
+
+# Node packages
+/node_modules/
+
+# Sass cache
+/.sass-cache/
