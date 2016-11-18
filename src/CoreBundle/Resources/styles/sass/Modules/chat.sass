@@ -1,0 +1,27 @@
+.chat-preview
+  .chat-notification
+    display: flex
+    justify-content: flex-end
+    align-items: flex-end
+    margin-bottom: $gutter
+
+    .chat-message
+      background-image: linear-gradient(60deg, #7b8a99, #a8c2da)
+      padding: $gutter/2 $gutter
+      border-radius: 20px 20px 0 20px
+
+    &:nth-child(odd)
+      .chat-message
+        background-image: linear-gradient(60deg, #4e9ce5, #34bedf)
+
+    &.writing
+      margin-bottom: 0
+      .chat-message
+        background: transparent
+        border: 1px solid rgba($w, .2)
+        color: rgba($w, .2)
+
+  .user
+    margin-left: $gutter
+
+//webkit-mask-image: -webkit-gradient( linear, left top, left bottom, color-stop(0.00, rgba(0,0,0,0)), color-stop(0.4, rgba(0,0,0,1)), color-stop(1.00, rgba(0,0,0,1))) */

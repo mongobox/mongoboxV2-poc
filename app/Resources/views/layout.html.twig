@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}MongoBox Troll Station!{% endblock %}</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto+Mono" rel="stylesheet">
+    {% block stylesheets %}
+        <link href="{{ asset('bundles/core/styles/main.css') }}" rel="stylesheet"/>
+    {% endblock %}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    {% block javascripts %}
+        <script type="text/javascript" src="{{ asset('bundles/core/js/live/showLive.js') }}"></script>
+    {% endblock %}
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+</head>
+<body>
+{% block body %}
+
+    {% block header %}
+        {#Fix header#}
+        {{ include ("Partials/header.html.twig") }}
+    {% endblock %}
+
+    {% block main %}
+    {% endblock %}
+
+    {% block footer %}
+    {% endblock %}
+
+
+{% endblock %}
+</body>
+</html>

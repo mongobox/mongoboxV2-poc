@@ -1,0 +1,67 @@
+{% extends 'layout.html.twig' %}
+{% block main %}
+    <section id="main-content">
+        {#Live description - left part#}
+        {% block liveDescription %}
+            <section class="live-description left-part">
+
+                {#Video description: author, title, user information and video information#}
+                <section class="video-presentation">
+                    <p class="video-author">Ten Hour Guy</p>
+                    <p class="video-title">Diggy Diggy Hole - 10 Hours</p>
+
+                    {#Video Caption#}
+                    <div class="video-caption">
+                        {#User informations: avatar and name && video status: new/posted/random#}
+                        <div class="contributor">
+                            {# mongobox-add/mongobox-up/mongobox-random #}
+                            <span class="mongobox-add"></span>
+                            <div class="contributor-avatar-container">
+                                <img class="contributor-avatar" src="{{ asset('bundles/core/images/users/user1.jpg') }}"
+                                     alt="user's name"/>
+                            </div>
+                            <p class="video-contributor">Posted by <span class="contributor-name">jho</span></p>
+                        </div>
+
+                        {#Video Information: vote and timer#}
+                        <div class="video-informations">
+                            <div class="video-vote">
+                                <span class="active" data-vote="up"><span class="mongobox-like"></span>3</span>
+                                <span data-vote="down"><span class="mongobox-dislike"></span>0</span>
+                            </div>
+                            <div>
+                                <span class="video-timer"><span class="mongobox-timer"></span>3:46</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {#Playlist container#}
+                {% block playlist %}
+                    {{ include ("CoreBundle:Live:playlist.html.twig") }}
+                {% endblock %}
+            </section>
+        {% endblock %}
+
+        {#Chat Preview - right part#}
+        {% block chatPreview %}
+            {{ include ("CoreBundle:Chat:preview.html.twig") }}
+        {% endblock %}
+    </section>
+
+    {#Live player fixed background#}
+    {% block liveBackground %}
+        <section class="live-video">
+            {#Video#}
+            <div class="live-player">
+                <iframe width="1280" height="720"
+                        src="https://www.youtube.com/embed/PWgvGjAhvIw?rel=0&amp;autoplay=1&amp;controls=0&amp;showinfo=0"
+                        frameborder="0" allowfullscreen></iframe>
+            </div>
+            {#Timer#}
+            <div class="timer-pregress-bar">
+                <div class="progess-bar"></div>
+            </div>
+        </section>
+    {% endblock %}
+{% endblock %}

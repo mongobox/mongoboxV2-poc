@@ -1,0 +1,152 @@
+// Main Structure
+//----------------------------------------------------------
+#main-content
+  position: relative
+  z-index: 2
+  display: flex
+  justify-content: space-between
+  align-items: flex-end
+  +not-full
+  padding-top: 111px
+  transform: translateY(-50%)
+  top: 50%
+
+  .live-description
+    flex: 2
+
+    .video-description,
+    .video-caption
+      [class^="mongobox-"],
+      [class*=" mongobox-"]
+        font-size: 1.5rem
+
+  .chat-preview
+    flex: 1
+    margin-left: 18rem
+
+  [class^="mongobox-"],
+  [class*=" mongobox-"]
+    margin: 0 $gutter/2 0 $gutter/3
+    font-size: 1.25rem
+    color: rgba($w, .2)
+
+  > section
+    transition: all .5s ease
+
+  &.show
+    .right-part
+      transform: translateX(6000px)
+    .left-part
+      transform: translateX(-6000px)
+    + .live-video .live-player
+      filter: blur(0)
+
+
+
+// Player
+//----------------------------------------------------------
+.live-video
+  position: fixed
+  top: 0
+  right: 0
+  width: 100%
+  height: 100%
+  z-index: 0
+
+  &:before
+    content: ""
+    background: $b
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    display: block
+    z-index: 1
+    opacity: .5
+
+  .live-player
+    position: relative
+    padding-bottom: 56.25%
+    padding-top: 25px
+    height: 100vh
+    width: 100%
+    filter: blur(40px)
+    transition: all .5s ease
+
+    iframe
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+
+  .timer-pregress-bar
+    width: 80%
+    height: 5px
+    position: absolute
+    bottom: 0
+    left: 0
+    z-index: 4
+    overflow: hidden
+
+    .progess-bar
+      background-image: linear-gradient(60deg, #ad24fc, #00ffd2)
+      width: 100vw
+      height: 5px
+      position: absolute
+      bottom: 0
+      left: 0
+
+// Playlist
+//----------------------------------------------------------
+.playlist
+  margin-top: 8rem
+
+  .title
+    +title
+
+  ul
+    li
+      display: flex
+      justify-content: space-between
+      align-items: center
+      border-bottom: 1px solid rgba($w, .2)
+      padding: $gutter/2 0
+
+      > div > *
+        display: inline-block
+        vertical-align: middle
+
+      .video-author
+        color: rgba($w, .5)
+
+// Video Description
+//----------------------------------------------------------
+.video-presentation
+  .video-title
+    font-size: 5rem
+    font-weight: bold
+    font-family: $Montserrat
+    margin-bottom: $gutter
+
+  .video-author
+    +title
+
+  .video-caption
+    display: flex
+    align-items: center
+    justify-content: space-between
+
+    > div > *
+      display: inline-block
+      vertical-align: middle
+
+    .video-contributor
+      color: rgba($w, .5)
+
+      .contributor-name
+        color: $w
+
+// Show live
+//----------------------------------------------------------
