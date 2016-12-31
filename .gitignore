@@ -45,3 +45,6 @@ composer.lock
 
 # Sass cache
 /.sass-cache/
+
+# Documentation sphinx
+/docs/build
