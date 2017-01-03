@@ -5,6 +5,19 @@ set :deploy_to,   "/var/www/mongobox_v2"
 set :app_path,    "app"
 set :web_path, 	  "web"
 set :var_path, 	  "var"
+set :bin_path, 	  "bin"
+
+set :symfony_console, fetch(:bin_path) + "/console"
+set :symfony_console_path,  fetch(:bin_path) + "/console"
+set :dump_assetic_assets, false
+
+
+# The next 3 settings are lazily evaluated from the above values, so take care
+# when modifying them
+set :app_config_path, "app/config"
+set :log_path, "var/logs"
+set :cache_path, "var/cache"
+set :sessions_path, "var/sessions"
 
 set :branch,      "master"
 set :repository,  "git@github.com:mongobox/mongoboxV2.git"
@@ -27,6 +40,12 @@ set :shared_children,   [var_path + "/logs", web_path + "/documentation", "vendo
 set :use_composer, true
 set :permission_method, :acl
 
+set :symfony_console_flags, "--no-debug"
+
+# asset management
+set :assets_install_path, "web"
+set :assets_install_flags,  '--symlink'
+
 # after first deployment you might want to change this to false. Setting to true will always install vendors each time
 set :update_vendors,  true
 set :dump_assetic_assets, true
@@ -40,6 +59,7 @@ set :use_sudo, false
 
 set :writable_dirs,       [var_path + "/cache", var_path + "/logs", var_path + "/sessions"]
 set :webserver_user,      "www-data"
+
 
 ssh_options[:forward_agent] = true
 ssh_options[:config]        = false
