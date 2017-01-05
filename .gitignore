@@ -48,3 +48,6 @@ composer.lock
 
 # Documentation sphinx
 /docs/build
+
+# Capifony
+app/config/deploy.rb

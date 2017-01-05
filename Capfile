@@ -1,4 +1,5 @@
 load 'deploy' if respond_to?(:namespace) # cap2 differentiator
 
-load 'app/config/capifony/capifony_symfony3'
+require 'capifony_symfony2'
+
 load 'app/config/deploy'

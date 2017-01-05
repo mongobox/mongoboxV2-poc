@@ -1,6 +1,6 @@
 set :application, "Mongobox V2"
-set :domain,      "mongobox.fr"
-set :deploy_to,   "/var/www/mongobox_v2"
+set :domain,      "DOMAIN"
+set :deploy_to,   "PATH"
 
 set :app_path,    "app"
 set :web_path, 	  "web"
@@ -48,13 +48,12 @@ set :assets_install_flags,  '--symlink'
 
 # after first deployment you might want to change this to false. Setting to true will always install vendors each time
 set :update_vendors,  true
-set :dump_assetic_assets, true
 
 # Confirmations will not be requested from the command line.
 set :interactive_mode, false
 
 # User details for the production server
-set :user, "mongobox"
+set :user, "SERVER_USER"
 set :use_sudo, false
 
 set :writable_dirs,       [var_path + "/cache", var_path + "/logs", var_path + "/sessions"]
@@ -66,3 +65,39 @@ ssh_options[:config]        = false
 
 # Be more verbose by uncommenting the following line
 logger.level = Logger::MAX_LEVEL
+
+after "deploy:finalize_update" do
+ 
+  desc "Install and run grunt"
+  run "cd #{latest_release}; npm install --quiet"
+  run "cd #{latest_release}; grunt prod --quiet"
+end
+
+
+# Slack notifications
+require 'capistrano/slack'
+
+set :deployer do
+  name = `git config user.name`.strip
+  name = `whoami`.strip if name == ''
+  name
+end
+
+set :slack_token, 'TOKEN # comes from inbound webhook integration
+set :slack_room, 'CHANNEL'
+set :slack_subdomain, 'TEAM'
+set :slack_emoji, ':shipit:'
+set :slack_deploy_defaults, false # Provided tasks are weird, and hooks are quite absurd. Let's do it ourselves.
+
+namespace :slack do
+  task :starting do
+    slack_connect "#{fetch(:deployer)} *started* deploying *#{fetch(:application)}*. :rocket:"
+  end
+
+  task :finished do
+    slack_connect "#{fetch(:deployer)} *finished* deploying *#{fetch(:application)}*. :star2:"
+  end
+end
+
+before 'deploy:update_code', 'slack:starting'
+after 'deploy:restart', 'slack:finished'
